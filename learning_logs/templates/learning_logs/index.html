@@ -1,0 +1,23 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+    <div class="jumbotron">
+        <h1>Track your learning.</h1>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <center>
+    <h2>
+        <a href="{% url 'users:register' %}">注册一个账户</a>来制作属于你的博客，
+        列出你正在学习的主题。
+    </h2>
+    <h2>
+        无论何时，当你对一个主题有了新的了解，就可以做一个记录来总结你所学到的内容。
+    </h2>
+    <h2>
+        &emsp;
+    </h2>
+    </center>
+    <img src="/static/二刺源.jpg" / width="100%">
+{% endblock content %}

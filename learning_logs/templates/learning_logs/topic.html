@@ -1,0 +1,45 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block header %}
+    <h2>{{ topic }}</h2>
+{% endblock header %}
+
+
+{% block content %}
+
+    <p>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}">添加新条目</a>
+    </p>
+    <p>&emsp;</p>
+    <ul>
+        {% for entry in entries %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ entry.date_added|date:'M d, Y H:i' }}
+                        <small>
+                            &emsp;
+                            <a href="{% url 'learning_logs:edit_entry' entry.id %}">
+                                编辑条目
+                            </a>
+                        </small>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {{ entry.text|linebreaks }}
+                </div>
+            </div>
+            
+        {% empty %}
+            <li>
+                这个主题暂时还没有内容~~
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+
+<!-- 我们创建了一个面板式div元素（而不是将每个条目作为一个列表项），其中
+包含两个嵌套的div：一个面板标题（panel-heading）div和一个面板主体（panel-body）
+div。其中面板标题div包含条目的创建日期以及用于编辑条目的链接，它们都被设置为<h3>
+元素，而对于编辑条目的链接，还使用了标签<small>，使其比时间戳小些 -->
